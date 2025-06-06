@@ -29,7 +29,7 @@ async function AltaEnvio(company, data) {
 
     let insertId;
     // Lógica para insertar un envío flex
-    if (data.data.flex === 1 && data.data.mlIa == 0) {
+    if (data.data.flex === 1 && data.data.mlIa == 88) {
       insertId = await insertEnvioFlex(data, company, connection);
     } else {
       // Validar datos del envío
@@ -54,6 +54,7 @@ async function AltaEnvio(company, data) {
           insertId = result.insertId; // Usar el ID existente
         }
       } else {
+
         // Insertar un envío estándar si no se cumple la condición de fulfillment
         insertId = await insertStandardEnvio(data, company, connection);
       }

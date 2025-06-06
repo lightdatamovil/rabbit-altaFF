@@ -30,7 +30,9 @@ async function startConsumer() {
           }
 
           if (idEmpresa === 315) {
-            const connectionDb = await getConnection(idEmpresa);
+            console.log("Procesando mensaje para idEmpresa 315:", data);
+
+            // const connectionDb = await getConnection(idEmpresa);
             const company = await getCompanyById(idEmpresa);
             console.log(data);
             // console.log(company, "company");
@@ -39,6 +41,8 @@ async function startConsumer() {
 
             channel.ack(msg);
           } else {
+            // console.log(`Mensaje con idEmpresa ${idEmpresa} recibido pero no procesado.`);
+
             // Si no es 97 ni excluida, solo confirmo sin procesar
             channel.ack(msg);
           }
