@@ -179,11 +179,11 @@ async function insertStandardEnvio(data, company, connection) {
 }
 
 async function processRelatedData(data, insertId, company, connection) {
-  await insertCobranza(data, insertId, company, connection);
-  await insertLogisticaInversa(data, insertId, company, connection);
-  await insertObservaciones(data, insertId, company, connection);
-  await insertDireccionesDestino(data, insertId, company, connection);
-  await insertDireccionesRemitente(data, insertId, company, connection);
+  // await insertCobranza(data, insertId, company, connection);
+  //await insertLogisticaInversa(data, insertId, company, connection);
+  //await insertObservaciones(data, insertId, company, connection);
+  //await insertDireccionesDestino(data, insertId, company, connection);
+  // await insertDireccionesRemitente(data, insertId, company, connection);
 
   // Verificar si el estado ha cambiado antes de insertar enviosItems
   const currentStatus = await getCurrentStatus(data, connection);
@@ -191,11 +191,11 @@ async function processRelatedData(data, insertId, company, connection) {
     data.data.status_order === "cancelled" ? 8 :
       null;
 
-  if (newStatus !== null && currentStatus !== newStatus) {
-    await insertEnviosItems(data, insertId, company, connection);
-  } else {
-    console.log("El estado es el mismo. Ignoramos la inserción de enviosItems.");
-  }
+  /* if (newStatus !== null && currentStatus !== newStatus) {
+     await insertEnviosItems(data, insertId, company, connection);
+   } else {
+     console.log("El estado es el mismo. Ignoramos la inserción de enviosItems.");
+   }*/
 
   await insertOrders(data, insertId, company, connection);
 
