@@ -35,6 +35,7 @@ class Envios {
       didServicio: data.didServicio ?? 1,
       didSucursalDistribucion: data.didSucursalDistribucion ?? 1,
       peso: data.peso ?? "",
+      destination_types: data.destination_types ?? " ",
       // estado_envio: data.estado_envio ?? 0,
 
       volumen: data.volumen ?? "",
