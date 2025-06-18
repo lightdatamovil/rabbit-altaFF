@@ -183,19 +183,7 @@ class Envios {
   }
 
 
-  async updateGtoken(did) {
 
-    this.gtoken = `${data.didEmpresa}x${this.didCliente}x${did}`
-
-    const query = "UPDATE envios SET gtoken = ? WHERE did = ? AND superado = 0 AND elim = 0";
-    try {
-      const results = await executeQuery(this.connection, query, [this.gtoken, this.id]);
-      return results;
-    } catch (error) {
-      throw error;
-    }
-
-  }
 }
 
 module.exports = Envios;
