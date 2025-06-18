@@ -32,6 +32,8 @@ class Envios {
       ml_qr_seguridad: data.ml_qr_seguridad ?? "",
       didCliente: data.didCliente ?? 0,
       didCuenta: data.didCuenta,
+      mode: data.mode ?? "",
+      didMetodoEnvio: data.didMetodoEnvio ?? 0,
       didServicio: data.didServicio ?? 1,
       didSucursalDistribucion: data.didSucursalDistribucion ?? 1,
       peso: data.peso ?? "",
@@ -158,16 +160,41 @@ class Envios {
       logBlue(`Values: ${JSON.stringify(values)}`);
 
       const insertId = result.insertId;
+      if (did == 0 || did == "0" || did == "" || did == null || did == undefined) {
+
+        await this.updateGtoken(insertId);
+      } else {
+
+        await this.updateGtoken(did);
+      }
       if (did === 0 || did === "0") {
         const updateQuery = "UPDATE envios SET did = ? WHERE id = ?";
         await executeQuery(connection, updateQuery, [insertId, insertId]);
         return { insertId, did: insertId };
-      } else {
+      }
+
+
+      else {
         return { insertId, did };
       }
     } catch (error) {
       throw error;
     }
+  }
+
+
+  async updateGtoken(did) {
+
+    this.gtoken = `${data.didEmpresa}x${this.didCliente}x${did}`
+
+    const query = "UPDATE envios SET gtoken = ? WHERE did = ? AND superado = 0 AND elim = 0";
+    try {
+      const results = await executeQuery(this.connection, query, [this.gtoken, this.id]);
+      return results;
+    } catch (error) {
+      throw error;
+    }
+
   }
 }
 
