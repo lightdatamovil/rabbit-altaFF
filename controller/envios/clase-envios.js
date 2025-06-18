@@ -160,13 +160,7 @@ class Envios {
       logBlue(`Values: ${JSON.stringify(values)}`);
 
       const insertId = result.insertId;
-      if (did == 0 || did == "0" || did == "" || did == null || did == undefined) {
 
-        await this.updateGtoken(insertId);
-      } else {
-
-        await this.updateGtoken(did);
-      }
       if (did === 0 || did === "0") {
         const updateQuery = "UPDATE envios SET did = ? WHERE id = ?";
         await executeQuery(connection, updateQuery, [insertId, insertId]);
