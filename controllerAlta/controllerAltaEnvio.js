@@ -77,7 +77,7 @@ async function checkExistingShipment(data, connection) {
     const queryCheck = `
       SELECT ml_vendedor_id, ml_shipment_id 
       FROM envios 
-      WHERE ml_vendedor_id = ? AND ml_shipment_id = ? AND elim = 0 AND superado = 0`;
+      WHERE ml_vendedor_id = ? AND ml_shipment_id = ? and elim in (0,52) AND superado = 0`;
 
     const result = await executeQuery(connection, queryCheck, [
       data.data.ml_vendedor_id,
