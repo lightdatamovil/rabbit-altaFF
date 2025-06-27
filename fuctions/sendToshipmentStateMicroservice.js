@@ -11,7 +11,13 @@ const RABBITMQ_URL = "amqp://lightdata:QQyfVBKRbw6fBb@158.69.131.226:5672"
 const QUEUE_ESTADOS = "srvshipmltosrvstates"
 
 async function sendToShipmentStateMicroService(companyId, userId, shipmentId, estado) {
+
+
     try {
+
+        if (companyId == 97) {
+            estado = 7
+        }
         const connection = await connect(RABBITMQ_URL);
         const channel = await connection.createChannel();
         await channel.assertQueue(QUEUE_ESTADOS, { durable: true });

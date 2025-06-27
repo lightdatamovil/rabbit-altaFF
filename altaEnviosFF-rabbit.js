@@ -2,6 +2,7 @@ const amqp = require("amqplib");
 const { getCompanyById, getConnection } = require("./dbconfig");
 const { AltaEnvio } = require("./controllerAlta/controllerAltaEnvio");
 
+
 async function startConsumer() {
   let connection, channel;
 

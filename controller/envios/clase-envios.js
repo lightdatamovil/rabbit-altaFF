@@ -14,8 +14,13 @@ class Envios {
     if (data.estado_envio == "paid") {
       data.estado_envio = 12;
     }
+
     if (data.estado_envio == "cancelled") {
       data.estado_envio = 13;
+    }
+
+    if (company.did == 97) {
+      data.estado_envio = 7;
     }
 
     const campos = {
@@ -38,7 +43,7 @@ class Envios {
       didSucursalDistribucion: data.didSucursalDistribucion ?? 1,
       peso: data.peso ?? "",
       destination_types: data.destination_types ?? " ",
-      // estado_envio: data.estado_envio ?? 0,
+      estado_envio: data.estado_envio ?? 1,
 
       volumen: data.volumen ?? "",
       bultos: data.bultos ?? 1,
