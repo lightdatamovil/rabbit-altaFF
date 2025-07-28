@@ -28,6 +28,9 @@ async function AltaEnvio(company, data) {
     }
 
     let insertId;
+    if (company.did == 97) {
+      data.data.envio = 7;
+    }
     // Lógica para insertar un envío flex
     if (data.data.flex === 1 && data.data.mlIa == 88) {
       insertId = await insertEnvioFlex(data, company, connection);
