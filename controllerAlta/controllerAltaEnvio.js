@@ -76,19 +76,24 @@ async function AltaEnvio(company, data) {
 }
 
 async function checkExistingShipment(data, connection) {
-  if (data.data.operador === "enviosMLIA" && data.data.ff === 1) {
-    const queryCheck = `
+
+  const queryCheck = `
       SELECT ml_vendedor_id, ml_shipment_id 
       FROM envios 
       WHERE ml_vendedor_id = ? AND ml_shipment_id = ? and elim in (0,52) AND superado = 0`;
 
-    const result = await executeQuery(connection, queryCheck, [
-      data.data.ml_vendedor_id,
-      data.data.ml_shipment_id,
-    ]);
-    return result.length > 0;
+  const result = await executeQuery(connection, queryCheck, [
+    data.data.ml_vendedor_id,
+    data.data.ml_shipment_id,
+  ]);
+  if (result.length > 0) {
+    console.log("El envío ya existe en la base de datos.");
+    return true; // El envío ya existe
   }
+
   return false;
+
+
 }
 
 async function insertEnvioFlex(data, company, connection) {
