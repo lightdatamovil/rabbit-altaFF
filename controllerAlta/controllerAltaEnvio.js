@@ -366,14 +366,14 @@ async function insertOrders(data, insertId, company, connection) {
         didEnvio: insertId,
         didCliente: data.data.didCliente,
         didCuenta: data.data.didCuenta,
-        status: data.data.status_order || "nollego",
+        status: data.data.status_order || "",
         flex: data.data.flex,
         fecha_venta: ordenData.fecha_venta || data.data.fecha_venta || "",
         number: ordenData.number || "",
         observaciones:
           ordenData.enviosObservaciones?.observacion ||
           data.data.enviosObservaciones?.observacion ||
-          "Observación por defecto",
+          "",
         armado: 0,
         descargado: 0,
         fecha_armado: null,

@@ -244,7 +244,7 @@ async function AltaEnvio(company, data) {
               observaciones:
                 ordenData.enviosObservaciones?.observacion ||
                 data.data.enviosObservaciones?.observacion ||
-                "Observación por defecto",
+                "",
               armado: 0,
               descargado: 0,
               fecha_armado: null,
