@@ -76,7 +76,7 @@ async function AltaEnvio(company, data) {
 }
 
 async function checkExistingShipment(data, connection) {
-  if (data.data.operador === "enviosMLIA" && data.data.ia === 1) {
+  if (data.data.operador === "enviosMLIA" && data.data.ff === 1) {
     const queryCheck = `
       SELECT ml_vendedor_id, ml_shipment_id 
       FROM envios 
