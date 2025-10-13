@@ -49,7 +49,7 @@ async function startConsumer() {
 
     // ✅ Sets prolijos
 
-    const empresasPermitidas = new Set([97, 130, 20, 175, 157]);    // IDs a procesar
+    const empresasPermitidas = new Set([97, 130, 20, 175]);    // IDs a procesar
 
     console.log("Esperando mensajes en la cola:", queue);
 
