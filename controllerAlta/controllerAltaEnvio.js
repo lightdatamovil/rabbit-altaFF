@@ -213,8 +213,16 @@ async function processRelatedData(data, insertId, company, connection) {
   }
 
   if (data.data.status_order === "paid") {
-    console.log("Enviando a microservicio con estado 1");
-    await sendToShipmentStateMicroService(company.did, data.data.quien, insertId, 1);
+
+    if (company.did = 130) {
+      await sendToShipmentStateMicroService(company.did, data.data.quien, insertId, 7);
+    }
+    else {
+
+      console.log("Enviando a microservicio con estado 1");
+      await sendToShipmentStateMicroService(company.did, data.data.quien, insertId, 1);
+
+    }
   } else {
     await sendToShipmentStateMicroService(company.did, data.data.quien, insertId, 1);
   }
