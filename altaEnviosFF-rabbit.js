@@ -73,6 +73,11 @@ async function startConsumer() {
             const company = await getCompanyById(idEmpresa);
             // console.log(company, "company");
 
+
+            const datal = JSON.stringify(data);
+            console.log(datal, "ASDDASDASD");
+
+
             await AltaEnvio(company, data);
 
             channel.ack(msg);
