@@ -20,7 +20,7 @@ async function sendToShipmentStateMicroService(companyId, userId, shipmentId, es
         estadoML: null,
         fecha: formatFechaUTC3(),
         quien: userId,
-        operacion: "Altamasiva"
+        operacion: "ALTA FF"
     };
 
     try {

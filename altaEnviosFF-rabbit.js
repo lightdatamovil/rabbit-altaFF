@@ -82,7 +82,7 @@ async function startConsumer() {
           }
         } catch (error) {
           console.error("Error procesando el mensaje:", error);
-          channel.nack(msg);
+
         }
       }
     });
