@@ -216,12 +216,9 @@ async function processRelatedData(data, insertId, company, connection) {
 
     if (company.did == 130) {
       await sendToShipmentStateMicroService(company.did, data.data.quien, insertId, 7);
-    }
-    else {
-
+    } else {
       console.log("Enviando a microservicio con estado 1");
       await sendToShipmentStateMicroService(company.did, data.data.quien, insertId, 1);
-
     }
   } else {
     await sendToShipmentStateMicroService(company.did, data.data.quien, insertId, 1);
