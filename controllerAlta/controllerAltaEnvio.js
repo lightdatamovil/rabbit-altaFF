@@ -208,21 +208,20 @@ async function processRelatedData(data, insertId, company, connection) {
 
   await insertOrders(data, insertId, company, connection);
 
-  if (data.data.status_order === "cancelled") {
-    await sendToShipmentStateMicroService(company.did, data.data.quien, insertId, 8);
-  }
+  const status = data.data.status_order;
+  const isSpecialCompany = company.did === 130 || company.did === 175;
 
-  if (data.data.status_order === "paid") {
+  let state;
 
-    if (company.did == 130 || company.did == 175) {
-      await sendToShipmentStateMicroService(company.did, data.data.quien, insertId, 7);
-    } else {
-      console.log("Enviando a microservicio con estado 1");
-      await sendToShipmentStateMicroService(company.did, data.data.quien, insertId, 1);
-    }
+  if (status === "cancelled") {
+    state = 8;
   } else {
-    await sendToShipmentStateMicroService(company.did, data.data.quien, insertId, 1);
+    state = isSpecialCompany ? 7 : 1;
   }
+
+  console.log(`Enviando a microservicio con estado ${state}`);
+  await sendToShipmentStateMicroService(company.did, data.data.quien, insertId, state);
+
 
   logPurple("FINAL");
 }
