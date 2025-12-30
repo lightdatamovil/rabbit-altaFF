@@ -209,7 +209,7 @@ async function processRelatedData(data, insertId, company, connection) {
   await insertOrders(data, insertId, company, connection);
 
   const status = data.data.status_order;
-  const isSpecialCompany = company.did === 130 || company.did === 175;
+  const isSpecialCompany = company.did == 130 || company.did == 175;
 
   let state;
 
