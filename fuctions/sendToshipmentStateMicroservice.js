@@ -8,7 +8,7 @@ const QUEUE_ESTADOS = "srvshipmltosrvstates";
 const BACKUP_ENDPOINT = "https://serverestado.lightdata.app/estados";
 
 async function sendToShipmentStateMicroService(companyId, userId, shipmentId, estado) {
-    if (companyId == 97) {
+    if (companyId == 97 || companyId == 130) {
         estado = 7;
     }
 
